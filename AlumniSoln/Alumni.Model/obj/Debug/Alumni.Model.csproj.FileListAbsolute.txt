@@ -1,0 +1,5 @@
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.Model\bin\Debug\Alumni.Model.dll
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.Model\bin\Debug\Alumni.Model.pdb
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.Model\obj\Debug\Alumni.Model.dll
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.Model\obj\Debug\Alumni.Model.pdb
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.Model\obj\Debug\Alumni.Model.csprojResolveAssemblyReference.cache

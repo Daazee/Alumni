@@ -1,0 +1,12 @@
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.DAL\bin\Debug\Alumni.DAL.dll
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.DAL\bin\Debug\Alumni.DAL.pdb
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.DAL\obj\Debug\Alumni.DAL.csprojResolveAssemblyReference.cache
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.DAL\obj\Debug\Alumni.DAL.dll
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.DAL\obj\Debug\Alumni.DAL.pdb
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.DAL\bin\Debug\Alumni.DAL.dll.config
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.DAL\bin\Debug\Alumni.Model.dll
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.DAL\bin\Debug\EntityFramework.dll
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.DAL\bin\Debug\Alumni.Model.pdb
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.DAL\bin\Debug\EntityFramework.xml
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.DAL\bin\Debug\EntityFramework.SqlServer.xml

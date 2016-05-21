@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Ajuseco Alumni</title>
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/simple-sidebar.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Ajuseco Alumni", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["Username"] != null)
+                    {
+                    <li>@Html.ActionLink("Welcome " + @Session["Username"].ToString(), "", new { Controller = "", Area = "" })</li>
+                    }
+                    <li>@Html.ActionLink("Logout", "Logout", new { Controller = "Access", Area = "Security" })</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Update Personal Data
+                    </a>
+                </li>
+                <li>@Html.ActionLink("Update Personal Data", "UpdatePersonalData", new { Controller = "Profile", Area = "User" })</li>
+
+                <li>@Html.ActionLink("Update Picture", "UploadProfilePicture", new { Controller = "Profile", Area = "User" })</li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year -  DeeProg</p>
+            </footer>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

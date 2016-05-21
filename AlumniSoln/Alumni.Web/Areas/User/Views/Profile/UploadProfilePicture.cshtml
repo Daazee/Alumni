@@ -1,0 +1,40 @@
+﻿@model Alumni.Model.AlumnusPicture
+
+@{
+    ViewBag.Title = "UploadProfilePicture";
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+
+<h2>UploadProfilePicture</h2>
+
+@*@using (Html.BeginForm())*@
+@using (Html.BeginForm("UploadProfilePicture", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Alumnus Picture</h4>
+        <hr />
+        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+      
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Picture, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label for="image" class="control-label col-md-2">Picture</label>
+            <div>
+                <input type="file" name="image" id="image" style="max-width:250px;" class="col-md-3"/>
+                <img src="data:image;base64,@System.Convert.ToBase64String(Model.Picture)" width="150" height="150" style="float:left;" class="col-md-3" />    
+            </div>
+            <div>
+                
+                @*<img src="data:image/jpg;base64,@(Convert.ToBase64String(item.PhotoImage))" alt="@item.orientation" />*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

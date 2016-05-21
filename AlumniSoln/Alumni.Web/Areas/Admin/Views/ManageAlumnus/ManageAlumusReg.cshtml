@@ -1,0 +1,239 @@
+﻿@model IEnumerable<Alumni.Model.AlumnusRegistration>
+
+@{
+    ViewBag.Title = "ManageAlumusReg";
+   // Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@*<h2>Manage La</h2>*@
+<br />
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+            <thead style="color:blueviolet;">
+               <tr><td colspan="10">List of registered Alumnus</td></tr>
+                <tr>
+                    <td>
+                        @if (ViewBag.status == "L")
+                        {
+                            @*@Html.ActionLink("All", "ManageAlumusReg", new { Controller = "Registration", Area = "Security", status = "L" })*@
+                            <b>@Html.ActionLink("All", "ManageAlumusReg", new { status = "L" })</b>
+                        }
+                        else
+                        {
+                            @Html.ActionLink("All", "ManageAlumusReg", new { status = "L" })
+                        }
+
+                    </td>
+                    <td>
+                        @if (ViewBag.status == "P")
+                        {
+                            <b>@Html.ActionLink("Pending", "ManageAlumusReg", new { status = "P" })</b>
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Pending", "ManageAlumusReg", new { status = "P" })
+                        }
+
+                    </td>
+                    <td>
+                        @if (ViewBag.status == "A")
+                        {
+                            <b> @Html.ActionLink("Approved", "ManageAlumusReg", new { status = "A" })</b>
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Approved", "ManageAlumusReg", new { status = "A" })
+                        }
+                    </td>
+                    <td>
+                        @if (ViewBag.status == "R")
+                        {
+                            <b> @Html.ActionLink("Rejected", "ManageAlumusReg", new { status = "R" })</b>
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Rejected", "ManageAlumusReg", new { status = "R" })
+                        }
+                    </td>
+                    <th colspan="7"></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>
+                        Approve|Reject
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Surname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Othername)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sex)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone_Number)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Username)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Reg_Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alumnus_Role)
+                    </th>
+                    <td>
+                        Ass
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @*@Html.ActionLink("Approve", "UpdateStatus", new { username = item.Username, status = "A" }, new { onclick = "return confirmStatusUpdate()" })|
+                            @Html.ActionLink("Reject", "UpdateStatus", new { username = item.Username, status = "R", role= }, new { onclick = "return confirmStatusUpdate()" })*@
+                            <input type="checkbox" class="ckb" name="updckb" id="@item.Username" value="@item.Username" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Othername)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sex)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone_Number)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Reg_Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Reg_Status)
+                        </td>
+                        <td>
+                            <select class="form-control" id="role" name="role">
+                                <option value="" selected>Select</option>
+                                <option value="U">User</option>
+                                <option value="A">Admin</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+<div class="container">
+    @*<a href='@Url.Action("")' class="btn btn-default" id="ready" onclick="return confirmStatusUpdate()">Ready</a> |
+        <a href='@Url.Action("")' class="btn btn-default" id="collection" onclick="return confirmCollectionStatus()">Collection</a>*@
+    <a href='@Url.Action("")' class="btn btn-default" id="reject">Reject</a> |
+    <a href='@Url.Action("")' class="btn btn-default" id="accept">Accept</a>
+
+    @*<a href='@Url.Action("TransUpdate" ,new { Area="User", Controller="Transaction" })' class="btn btn-default" id="collection" style="margin-left:100px;">Proceed to Payment</a>*@
+</div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#reject').click(function (e) {
+                e.preventDefault();
+                var role = $('#role').val();
+                var checkedIds = $(".ckb").filter(":checked").map(function () { return this.id; });
+                //alert("" + checkedIds[0] + "," + checkedIds[1]);
+                var r = confirm("Are you sure you want to reject selected alumnus");
+                if (r) {
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("UpdateStatusRole")",
+                        traditional: true,
+                        data: { username: checkedIds.toArray(), Status: "R", Role: role },
+                    success: successFunc,
+                    error: errorFunc
+                });
+
+                function successFunc(data, status) {
+                    location.reload();
+                  //  sendMessage();
+                }
+
+                function errorFunc() {
+                    alert("Error occured");
+                }
+            }
+            else {
+        }
+
+        })
+           
+            $('#accept').click(function (e) {
+                e.preventDefault();
+                var role = $('#role').val();
+                var checkedIds = $(".ckb").filter(":checked").map(function () { return this.id; });
+                var r = confirm("Are you sure you want to accept selected alumnus");
+                if (r) {
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("UpdateStatusRole")",
+                        traditional: true,
+                        data: { username: checkedIds.toArray(), Status: "A", Role: role },
+                    success: successFunc,
+                    error: errorFunc
+                });
+
+                function successFunc(data, status) {
+                    location.reload();
+                }
+
+                function errorFunc() {
+                    alert("Error occured");
+                }
+            }
+        })
+
+        //function sendMessage() {
+        //    var phoneNo = $('#phoneno').val();
+        //    var clothStatus = $('#clothstatus').val();
+        //    phoneNo = "234" + phoneNo.substring(1)
+        //    console.log(phoneNo);
+        //    console.log("Cloth Status is: " + clothStatus);
+        //    if (clothStatus == "N") {
+        //        $.ajax({
+        //            type: "GET",
+        //            url: "http://api.smartsmssolutions.com/smsapi.php?username=DeeProg&password=Tremendous@1&sender=Laundry&recipient=" + phoneNo + "&message=Your Cloth is ready for collection. Thanks for your patronage.",
+        //            success: successFunc,
+        //            error: errorFunc
+        //        });
+
+        //        function successFunc(response) {
+        //            console.log("Message sending response" + response);
+        //        }
+
+        //        function errorFunc(error) {
+        //            //alert("Error occured");//To avoid alerting if no internet connection.
+        //            console.log(error);
+        //        }
+        //    }
+
+        //}
+
+        })
+        //function confirmStatusUpdate()
+        //{
+        //    confirm("Are you sure you want to update status");
+        //}
+    </script>
+
+}

@@ -1,0 +1,11 @@
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.BLL\bin\Debug\Alumni.BLL.dll
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.BLL\bin\Debug\Alumni.BLL.pdb
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.BLL\bin\Debug\Alumni.DAL.dll
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.BLL\bin\Debug\Alumni.DAL.pdb
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.BLL\obj\Debug\Alumni.BLL.csprojResolveAssemblyReference.cache
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.BLL\obj\Debug\Alumni.BLL.dll
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.BLL\obj\Debug\Alumni.BLL.pdb
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.BLL\bin\Debug\Alumni.Model.dll
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.BLL\bin\Debug\EntityFramework.dll
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.BLL\bin\Debug\Alumni.Model.pdb
+E:\CSharpMVCProject\MVCApps\AlumniSoln\Alumni.BLL\bin\Debug\EntityFramework.xml
